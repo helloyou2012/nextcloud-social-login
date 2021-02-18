@@ -35,6 +35,10 @@ class CustomOAuth2 extends OAuth2
         if (!isset($response->identifier) && isset($response->user_id)) {
             $response->identifier = $response->user_id;
         }
+        if (isset($response->avatar)) {
+            $response->photoURL = $response->avatar;
+        }
+        $response->displayName = $response->nickname;
 
         $data = new Data\Collection($response);
 
